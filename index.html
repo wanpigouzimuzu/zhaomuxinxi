@@ -5,30 +5,44 @@
 <meta charset="UTF-8">
 <font face=微软雅黑>  <title>顽皮狗字幕组招募信息</title>
 <style>
+html {
+                height: 100%
+}
 body{
+                margin: 0;
+                height: 100%;
   text-align: center;
+
+
 }
 .center {
         width:100% ;
-		height:100%
-		
+		height:100%		
 		line-height:30px; 
         border: 1px dotted pink;
 		font-size:25px;
 		color:#175F99;
         text-align:center
-        
 		
 		
 }
 .left{
-        width: 85%;
+       
+        width: 80%;
         margin: auto;
 		
 }
+#canvas {
+                display: block;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
 
 </style>
-  <body bgcolor="B1DEFF">
+  <body bgcolor="B1DEFF" onload="init(100)">
 <center><font size="40" color="6699FF">顽皮狗字幕组招募信息</font></center><br>
 <marquee direction="left" scrollamount=20 behavior="slide"  ><font size="6" color="FFFFFF"><center>本字幕组靠爱发电(●'◡'●)，不盈利<br>
 &emsp;&emsp;主要翻译来自YouTube的内容，视频长短在二至二十分钟不等<br>
@@ -48,10 +62,10 @@ body{
 5.不接受三分钟热度者<br>
 6.本字幕组主要使用QQ作为交流工具<br>
 7.有证书者优先<br>
-8.<font color="red">如果你很忙，请不要加入！请不要加入本字幕组！<br></font>
+8.<font color="red">如果你很忙，请不要加入本字幕组！<br></font>
 要求就这么多，如果你对本字幕组感兴趣的话，<br>
 </p>
-<a href=https://space.bilibili.com/106366885/#!/ target="_blank">这是顽皮狗字幕组的主页</a>
+<a href=https://space.bilibili.com/106366885/ target="_blank">这是顽皮狗字幕组的主页</a>
 如果你对自己的能力有信心，欢迎加入字幕组审核群：<br>
 _ _ _ _ _ _<br>
 </td>
@@ -60,6 +74,214 @@ _ _ _ _ _ _<br>
 </div>
 <p style="text-align: center"><img src="https://c-ssl.duitang.com/uploads/item/201807/01/20180701132001_wiKJw.thumb.700_0.jpeg" ></p><br>
 <span style="align: center">最后编辑时间：2020.04.05</span>
+<canvas id="canvas">
+</canvas>
+<script>
+window.requestAnimationFrame = window.requestAnimationFrame 
 
+										|| window.mozRequestAnimationFrame 
+
+										|| window.webkitRequestAnimationFrame 
+
+										|| window.msRequestAnimationFrame;
+
+			
+
+			var canvas = document.getElementById('canvas');
+
+			var ctx = canvas.getContext('2d');
+
+			
+
+			var w = canvas.width = canvas.offsetWidth;
+
+			var h = canvas.height = canvas.offsetHeight;
+
+			var circles = [];
+
+			var current_circle = new currentCircle(0, 0);
+
+			
+
+			function init(num) {
+
+				for(var i = 0; i < num; i ++) {
+
+					circles.push(new circle(Math.random() * w, Math.random() * h));
+
+				}
+
+				draw();
+
+			}
+
+			
+
+			function draw() {
+
+				ctx.clearRect(0, 0, w, h);
+
+				for(var i = 0; i < circles.length; i ++) {
+
+					circles[i].move(w, h);
+
+					circles[i].drawCircle(ctx);
+
+					for(var j = i + 1; j < circles.length; j++) {
+
+						circles[i].drawLine(ctx, circles[j]);
+
+					}
+
+				} 
+
+				if (current_circle.x) {
+
+					current_circle.drawCircle(ctx);
+
+					for (var k = 0; k < circles.length; k++) {
+
+						current_circle.drawLine(ctx, circles[k])
+
+					}
+
+				}
+
+				requestAnimationFrame(draw);
+
+			}
+
+			
+
+			window.onmousemove = function(e) {
+
+				e = e || window.event;
+
+				current_circle.x = e.clientX;
+
+				current_circle.y = e.clientY;
+
+			}
+
+			window.onmouseout = function() {
+
+				current_circle.x = null;
+
+				current_circle.y = null;
+
+			 }
+
+			
+
+			//创建对象:圆
+
+			//x, y为坐标点, r为半径, _mx, _my为移动的距离
+
+			function circle(x, y) {
+
+				this.x = x;
+
+				this.y = y;
+
+				this.r = Math.random() * 10;
+
+				this._mx = 1 - (Math.random() * 2);
+
+				this._my = 1 - (Math.random() * 2);
+
+				
+
+				//canvas画圆
+
+				this.drawCircle = drawCircle;
+
+				function drawCircle(ctx) {
+
+					ctx.beginPath();
+
+					ctx.arc(this.x, this.y, this.r, 0, 360);
+
+					ctx.fillStyle = 'rgba(30, 144, 255, 0.3)';
+
+					ctx.fill();
+
+				}
+
+				
+
+				this.move = move;
+
+				function move(w, h) {
+
+					this._mx = (this.x < w && this.x > 0) ? this._mx : (-this._mx);
+
+					this._my = (this.y < h && this.y > 0) ? this._my : (-this._my);
+
+					this.x += this._mx / 2;
+
+					this.y += this._my / 2;
+
+				}
+
+				
+
+				//canvas画线
+
+				//画直线是两个圆连线，为了避免直线过多，给圆圈距离设置了一个值，距离很远的圆圈，就不做连线处理
+
+				this.drawLine = drawLine;
+
+				function drawLine(ctx, _circle) {
+
+					var dx = this.x - _circle.x;
+
+					var dy = this.y - _circle.y;
+
+					var d = Math.sqrt(dx * dx + dy * dy);
+
+					if (d < 150) {
+
+						ctx.beginPath();
+
+						ctx.moveTo(this.x, this.y);//起点
+
+						ctx.lineTo(_circle.x, _circle.y);//终点
+
+						ctx.strokeStyle = 'rgba(0, 206, 209, 0.3)';
+
+						ctx.stroke();
+
+					}
+
+				}
+
+			}
+
+			
+
+			function currentCircle(x, y) {
+
+				circle.call(this, x, y);
+
+				
+
+				this.drawCircle = drawCircle;
+
+				function drawCircle(ctx) {
+
+					ctx.beginPath();
+
+					ctx.arc(this.x, this.y, 8, 0, 360);
+
+					ctx.fillStyle = 'rgba(255, 250, 205, 0.6)';
+
+					ctx.fill();
+
+				}
+
+			}
+
+
+</script>
 </body>
 </html>
