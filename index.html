@@ -3,22 +3,19 @@
 <head>
 <meta charset="UTF-8">
  <title style="font-face=微软雅黑">顽皮狗字幕组招募信息</title>
-<style type="text/css">
+<style>
 html,body {
             height:100%;
             text-align: center;
-            background: #B993D6; 
-            background: -webkit-linear-gradient(to left, #8CA6DB, #B993D6); 
-            background: linear-gradient(to left, #8CA6DB, #B993D6); 
 }
 .center {
         width:100%;
-		height:100%		
-		line-height:30px; 
+		height:100%;		
+		line-height:37px; 
         border: 1px dotted pink;
 		font-size:35px;
 		color:#175F99;
-        text-align:center
+        text-align:center;
 }
 .left{
        
@@ -26,8 +23,9 @@ html,body {
         margin: auto;
 }
 .body{
-	    background:#000000;
-	    background-color:transparent;
+            background: #B993D6; 
+            background: -webkit-linear-gradient(to left, #8CA6DB, #B993D6); 
+            background: linear-gradient(to left, #8CA6DB, #B993D6); 
 }
 #canvas {
                 display: block;
@@ -42,7 +40,7 @@ html,body {
 </style>
 <canvas id="canvas">
 </canvas>
-<script type="text/javascript">
+<script>
 window.requestAnimationFrame = window.requestAnimationFrame 
 
 										|| window.mozRequestAnimationFrame 
@@ -167,7 +165,7 @@ window.requestAnimationFrame = window.requestAnimationFrame
 
 					ctx.arc(this.x, this.y, this.r, 0, 360);
 
-					ctx.fillStyle = 'rgba(255, 206, 0, 0.5)';
+					ctx.fillStyle = 'rgba(255, 206, 0, 0.4)';
 
 					ctx.fill();
 
@@ -213,7 +211,7 @@ window.requestAnimationFrame = window.requestAnimationFrame
 
 						ctx.lineTo(_circle.x, _circle.y);//终点
 
-						ctx.strokeStyle = 'rgba(255, 255, 0, 0.5)';
+						ctx.strokeStyle = 'rgba(255, 255, 0, 0.4)';
 
 						ctx.stroke();
 
