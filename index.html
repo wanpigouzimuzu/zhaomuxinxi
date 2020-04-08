@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
  <title style="font-face=微软雅黑">顽皮狗字幕组招募信息</title>
-<style>
+<style type="text/css">
 html,body {
             height:100%;
+            text-align: center;
             background: #B993D6; 
             background: -webkit-linear-gradient(to left, #8CA6DB, #B993D6); 
             background: linear-gradient(to left, #8CA6DB, #B993D6); 
-            text-align: center;
 }
 .center {
         width:100%;
@@ -24,7 +24,10 @@ html,body {
        
         width: 75%;
         margin: auto;
-		
+}
+.body{
+	    background:#000000;
+	    background-color:transparent;
 }
 #canvas {
                 display: block;
@@ -34,48 +37,12 @@ html,body {
                 top: 0;
                 left: 0;
 				pointer-events:none;
+	            z-index:-1;
             }
 </style>
-</head>
-<body onload="init(60)">
-<font size="7" color="#CC0033">顽皮狗字幕组招募信息</font><br>
-<a href=https://space.bilibili.com/106366885 target="_blank"><img src="http://tiebapic.baidu.com/forum/pic/item/481dfbf2b2119313ae08dcd672380cd790238dee.jpg"></a><br>
-<a href=https://space.bilibili.com/106366885 target="_blank"><font size="6">点击狗头或这里进入字幕组主页</font></a><br>
-<marquee direction="left" scrollamount="60" behavior="slide"><font size="6" color="#8A2BE2"><center>本字幕组靠爱发电(●'◡'●)，不盈利<br>
-&emsp;&emsp;主要翻译来自YouTube的内容，视频长短在二至二十分钟不等<br>
-&emsp;&ensp;目前主要招募英语，日语，韩语，三语翻译</center></font></marquee><br>
-	  <center><font size=6 color="#CC0033">暂停整改中......请耐心等待，谢谢！！！</font></center></br>
-	  <center><img src="https://n.sinaimg.cn/games/crawl/20160721/Wm4D-fxuifip2518011.gif"></center>
-<div class="left">
-<table class="center">
-<tr>
-<td  align="left">
-<font size="6" color="#CC0033">要求：</font><br>
-<p class="p1">
-1.有耐心<br>
-2.有一定的能力，能够听写外语句子<br>
-3.一定要成年<br>
-4.有固定的空闲时间<br>
-5.不接受三分钟热度者<br>
-6.本字幕组主要使用QQ作为交流工具<br>
-7.有证书者优先<br>
-8.<font color="CC0033">如果你很忙，<br>
-请不要加入本字幕组！<br></font>
-要求就这么多，<br>
-如果你对本字幕组感兴趣的话，<br>
-欢迎点击顶部链接进入字幕组主页,<br>
-如果你对自己的能力有信心，<br>
-欢迎加入字幕组审核群：<br>
-_ _ _ _ _ _<br>
-</td>
-</tr>
-</table>
-</div>
-<p style="text-align: center"><img src="http://tiebapic.baidu.com/forum/pic/item/59f9d933c895d1431ae4d24564f082025baf07a7.jpg"></p><br>
-<center>最后编辑时间：2020.4.8</center>
-<canvas width="100%" height="100%" id="canvas">
+<canvas id="canvas">
 </canvas>
-  <script object.style.zIndex="-3">
+<script type="text/javascript">
 window.requestAnimationFrame = window.requestAnimationFrame 
 
 										|| window.mozRequestAnimationFrame 
@@ -200,7 +167,7 @@ window.requestAnimationFrame = window.requestAnimationFrame
 
 					ctx.arc(this.x, this.y, this.r, 0, 360);
 
-					ctx.fillStyle = 'rgba(255, 206, 0, 0.3)';
+					ctx.fillStyle = 'rgba(255, 206, 0, 0.5)';
 
 					ctx.fill();
 
@@ -246,7 +213,7 @@ window.requestAnimationFrame = window.requestAnimationFrame
 
 						ctx.lineTo(_circle.x, _circle.y);//终点
 
-						ctx.strokeStyle = 'rgba(255, 255, 0, 0.3)';
+						ctx.strokeStyle = 'rgba(255, 255, 0, 0.5)';
 
 						ctx.stroke();
 
@@ -280,5 +247,42 @@ window.requestAnimationFrame = window.requestAnimationFrame
 
 			}
 </script>
+</head>
+<body class="body" onload="init(100)">
+<font size="7" color="#CC0033">顽皮狗字幕组招募信息</font><br>
+<a href=https://space.bilibili.com/106366885 target="_blank"><img src="http://tiebapic.baidu.com/forum/pic/item/481dfbf2b2119313ae08dcd672380cd790238dee.jpg"></a><br>
+<a href=https://space.bilibili.com/106366885 target="_blank"><font size="6">点击狗头或这里进入字幕组主页</font></a><br>
+<marquee direction="left" scrollamount="60" behavior="slide"><font size="6" color="#8A2BE2"><center>本字幕组靠爱发电(●'◡'●)，不盈利<br>
+&emsp;&emsp;主要翻译来自YouTube的内容，视频长短在二至二十分钟不等<br>
+&emsp;&ensp;目前主要招募英语，日语，韩语，三语翻译</center></font></marquee><br>
+	  <center><font size=6 color="#CC0033">暂停整改中......请耐心等待，谢谢！！！</font></center></br>
+	  <center><img src="https://n.sinaimg.cn/games/crawl/20160721/Wm4D-fxuifip2518011.gif"></center>
+<div class="left">
+<table class="center">
+<tr>
+<td  align="left">
+<font size="6" color="#CC0033">要求：</font><br>
+<p class="p1">
+1.有耐心<br>
+2.有一定的能力，能够听写外语句子<br>
+3.一定要成年<br>
+4.有固定的空闲时间<br>
+5.不接受三分钟热度者<br>
+6.本字幕组主要使用QQ作为交流工具<br>
+7.有证书者优先<br>
+8.<font color="CC0033">如果你很忙，<br>
+请不要加入本字幕组！<br></font>
+要求就这么多，<br>
+如果你对本字幕组感兴趣的话，<br>
+欢迎点击顶部链接进入字幕组主页,<br>
+如果你对自己的能力有信心，<br>
+欢迎加入字幕组审核群：<br>
+_ _ _ _ _ _<br>
+</td>
+</tr>
+</table>
+</div>
+<p style="text-align: center"><img src="http://tiebapic.baidu.com/forum/pic/item/59f9d933c895d1431ae4d24564f082025baf07a7.jpg"></p><br>
+<center>最后编辑时间：2020.4.8</center>
 </body>
 </html>
